@@ -20,7 +20,12 @@ export default {
       if (this.task == "") {
         return alert("Task Filed is required.");
       }
-      this.$emit("addTask",{task:this.task,done:false});
+      this.$store.commit('addTodo',{ task: this.task, done: false });
+      this.$notify({
+        group: "foo",
+        title: "Created!",
+        text: "Your Tasks has been added to Todo list."
+      });
       this.task = "";
     }
   }
